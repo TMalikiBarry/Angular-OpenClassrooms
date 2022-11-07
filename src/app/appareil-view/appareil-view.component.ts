@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AppareilService } from '../services/appareil.service';
-import { Subscription } from 'rxjs';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AppareilService} from '../services/appareil.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-appareil-view',
@@ -37,16 +37,15 @@ export class AppareilViewComponent implements OnInit, OnDestroy {
     this.appareilService.switchOnAll();
   }
 
-  onEteindre(): any {
-    if(confirm('Etes-vous sûr de vouloir éteindre tous vos appareils ?')) {
+  onEteindre() {
+    if (confirm('Etes-vous sûr de vouloir éteindre tous vos appareils ?')) {
       this.appareilService.switchOffAll();
     } else {
-      return null;
+      return;
     }
   }
 
   ngOnDestroy() {
     this.appareilSubscription.unsubscribe();
   }
-
 }
